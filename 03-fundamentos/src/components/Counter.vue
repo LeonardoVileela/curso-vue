@@ -1,6 +1,6 @@
 <template>
-  <h2>{{title ? title : 'TESTE'}}</h2>
-  <p>{{counter}}<sup>2</sup> = {{squaredCounter}}</p>
+  <h2>{{ title ? title : 'TESTE' }}</h2>
+  <p>{{ counter }}<sup>2</sup> = {{ squaredCounter }}</p>
   <div>
     <button @click="increase">+1</button>
     <button @click="decrease">-1</button>
@@ -14,7 +14,11 @@ export default {
     title: String,
     start: {
       type: Number,
-      default: 1
+      default: 100,
+
+      validator(value) {
+        return value >= 0
+      }
     }
   },
 
@@ -26,10 +30,10 @@ export default {
     getSquaredValue() {
       return 'hola mundo';
     },
-    increase(){
+    increase() {
       this.counter = this.counter + 1
     },
-    decrease(){
+    decrease() {
       this.counter = this.counter - 1
     }
   }, computed: {
@@ -53,7 +57,7 @@ button {
   transition: 0.3s ease-in-out;
 }
 
-button:hover{
+button:hover {
   background-color: #5aa67b;
   transition: 0.3s ease-in-out;
 }
